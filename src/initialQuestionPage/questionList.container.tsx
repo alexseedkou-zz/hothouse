@@ -10,6 +10,7 @@ import {
 import { SingleQuestionComponentContainier } from "./question.component";
 
 import store from "../store/root.store";
+import { curSelectedQuestoinSelector } from "./question.reducer";
 
 
 export interface IProps {
@@ -38,33 +39,16 @@ export class QuestionListComponent extends React.PureComponent<IProps> {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<RootAction>) => ({
-	// select: (index: number) => {
-	// 	const curIndex = ownProps.questionList.curSelectedIndex;
-	// 	if (curIndex !== -1 && curIndex !== index) {
-	// 		dispatch(unselectQuestion({ index: curIndex }));
-	// 	}
-	// 	dispatch(selectQuestion({ index }));
-	// },
-	select: (index: number) => dispatch(selectQuestion({ index })),
+	select: (index: number) => {
+		const curIndex = curSelectedQuestoinSelector(store.getState().questionReducer);
+		if (curIndex !== -1 && curIndex !== index) {
+			dispatch(unselectQuestion({ index: curIndex }));
+		}
+		dispatch(selectQuestion({ index }));
+	},
 	unselect: (index: number) => dispatch(unselectQuestion({ index })),
 });
 
-// const mapStateToProps = (state = store.getState(), ownProps: IProps) => {
-// 	return {
-// 		curSelectedIndex: curSelectedQuestoinSelector(state.questionReducer),
-// 	};
-// };
-
-// const mergeProps =
-// 	(stateProps = mapStateToProps, dispatchProps = mapDispatchToProps, ownProps: IProps) => {
-// 		return {
-// 			...stateProps,
-// 			...dispatchProps,
-// 			onChange: (index: number) => (
-// 				dispatchProps
-// 			)
-// 		};
-// 	}
 
 export const QuestionListComponentContainer = connect(
 	undefined,

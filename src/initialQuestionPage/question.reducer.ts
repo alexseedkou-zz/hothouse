@@ -54,6 +54,6 @@ export const selectQuestionSelector = (
 	}
 };
 
-// export const curSelectedQuestoinSelector = (state: IQuestionListState) => {
-// 	return state.curSelectedIndex;
-// };
+export const curSelectedQuestoinSelector = (state: IQuestionListState) => {
+	return state.curSelectedIndex;
+};
