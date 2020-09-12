@@ -1,0 +1,11 @@
+.questionButton {
+	background:blue;
+	display: flex;
+	justify-content: space-around;
+	width: 200px;
+	margin: 10px;
+}
+
+.questionMark {
+  background: green;
+}
