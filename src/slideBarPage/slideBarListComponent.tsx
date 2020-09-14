@@ -44,10 +44,7 @@ class SlideBareListComponent extends React.PureComponent<IProps, any> {
 				</div>
 				{this.props.isConfirmed ? (
 					<div>
-						Confirmed with values{" "}
-						{
-              this.props.submitList[0].vaule
-						}
+						Confirmed
 					</div>
 				) : (
 					<button onClick={handleOnConfirm}>Confirm</button>
